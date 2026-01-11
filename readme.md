@@ -11,9 +11,9 @@ After=network.target
 # Replace 'pi' with your username if different
 User=pi
 # The directory where your script lives
-WorkingDirectory=/home/pi/scripts
+WorkingDirectory=/home/elsuterino/scripts
 # The command to run your script
-ExecStart=/usr/bin/python3 /home/pi/scripts/take_photo.php
+ExecStart=/usr/bin/python3 /home/elsuterino/scripts/take_photo.php
 # Auto-restart if the script crashes
 Restart=always
 RestartSec=5
