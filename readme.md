@@ -1,6 +1,8 @@
 wget https://raw.githubusercontent.com/elsuterino/timelapse-pi/main/picture.py
 
-sudo nano /etc/systemd/system/timelapse.service
+mkdir -p ~/.config/systemd/user/
+
+nano ~/.config/systemd/user/timelapse.service
 
 ```
 [Unit]
@@ -8,7 +10,7 @@ Description=Python Timelapse Camera Script
 After=network.target
 
 [Service]
-User=elsuterino   
+WorkingDirectory=/home/elsuterino
 ExecStart=/usr/bin/python3 /home/elsuterino/picture.py
 Restart=always
 RestartSec=5
@@ -17,8 +19,6 @@ RestartSec=5
 WantedBy=multi-user.target
 ```
 
-sudo systemctl daemon-reload
-
-sudo systemctl enable timelapse.service
-
-sudo systemctl start timelapse.service
+systemctl --user daemon-reload
+systemctl --user enable timelapse.service
+systemctl --user start timelapse.service
